@@ -6,6 +6,8 @@ import FileBase from "react-file-base64";
 import useStyles from "./styles";
 import { createPost, updatePost } from "../actions/posts";
 export default function Form({ currentId, setCurrentId }) {
+  const auth = useSelector((state) => state.authReducer);
+
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -17,7 +19,6 @@ export default function Form({ currentId, setCurrentId }) {
   );
   const dispatch = useDispatch();
   const classes = useStyles();
-  const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -37,17 +38,20 @@ export default function Form({ currentId, setCurrentId }) {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
+      dispatch(createPost({ ...postData, name: auth?.authData?.result?.name }));
       clear();
     } else {
       dispatch(
-        updatePost(currentId, { ...postData, name: user?.result?.name })
+        updatePost(currentId, {
+          ...postData,
+          name: auth?.authData?.result?.name,
+        })
       );
       clear();
     }
   };
 
-  if (!user?.result?.name) {
+  if (!auth?.authData?.result) {
     return (
       <Paper className={classes.paper}>
         <Typography variant="h6" align="center">
@@ -100,20 +104,12 @@ export default function Form({ currentId, setCurrentId }) {
           }
         />
         <div className={classes.fileInput}>
-          {/* <FileBase
+          <FileBase
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
               setPostData({ ...postData, selectedFile: base64 })
             }
-          /> */}
-
-          <input
-            type="file"
-            name="myImage"
-            onChange={(event) => {
-              setPostData({ ...postData, selectedFile: event.target.files[0] });
-            }}
           />
         </div>
         <Button
