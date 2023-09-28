@@ -1,6 +1,6 @@
 import axios from "axios";
-
-const API = axios.create({ baseURL: "http://localhost:5000" });
+const url = "https://breakable-overalls-goat.cyclic.cloud";
+const API = axios.create({ baseURL: url });
 
 API.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {
