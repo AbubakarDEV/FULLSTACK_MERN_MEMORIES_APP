@@ -16,7 +16,7 @@ export const createPosts = async (req, res) => {
   const newPostMessage = new PostMessage({
     ...post,
     creator: req.userId,
-    createdAt: new Data().toISOString,
+    createdAt: Date.now(),
   });
 
   try {

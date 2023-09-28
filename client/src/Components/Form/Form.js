@@ -100,12 +100,20 @@ export default function Form({ currentId, setCurrentId }) {
           }
         />
         <div className={classes.fileInput}>
-          <FileBase
+          {/* <FileBase
             type="file"
             multiple={false}
             onDone={({ base64 }) =>
               setPostData({ ...postData, selectedFile: base64 })
             }
+          /> */}
+
+          <input
+            type="file"
+            name="myImage"
+            onChange={(event) => {
+              setPostData({ ...postData, selectedFile: event.target.files[0] });
+            }}
           />
         </div>
         <Button

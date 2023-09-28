@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Post from "./Post/Post";
 import { useSelector } from "react-redux";
 import { Grid, CircularProgress } from "@material-ui/core";
 import useStyles from "./styles";
-import { useDispatch } from "react-redux";
 
 export default function Posts({ currentId, setCurrentId }) {
   const posts = useSelector((state) => state.posts);
   const classes = useStyles();
-
+  console.log("posts", posts);
   return (
     <>
       {!posts.length ? (

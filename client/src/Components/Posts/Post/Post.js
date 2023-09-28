@@ -28,7 +28,7 @@ export default function Post({ post, setCurrentId }) {
         title={post.title}
       />
       <div className={classes.overlay}>
-        <Typography variant="h6">{post.creator}</Typography>
+        <Typography variant="h6">{post.name}</Typography>
         <Typography variant="body2">
           {moment(post.createdAt).fromNow()}
         </Typography>
@@ -66,7 +66,7 @@ export default function Post({ post, setCurrentId }) {
           color="primary"
           onClick={() => dispatch(likePost(post._id))}
         >
-          <ThumbUpAltIcon fontSize="small" /> Like {post.likeCount}{" "}
+          <ThumbUpAltIcon fontSize="small" /> Like {post?.likes?.length}
         </Button>
         <Button
           size="small"

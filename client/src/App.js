@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Home from "./Components/Home/Home";
 
 import { Container } from "@material-ui/core";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar/Navbar";
 import SignUp from "./Components/Auth/Auth";
-import TestPage from "./Components/Test";
 
 function App() {
   return (
@@ -17,7 +16,6 @@ function App() {
             <Route index element={<Home />} />
           </Route>
           <Route path="auth" element={<SignUp />} />
-          <Route path="test" element={<TestPage />} />
         </Routes>
       </Container>
     </BrowserRouter>

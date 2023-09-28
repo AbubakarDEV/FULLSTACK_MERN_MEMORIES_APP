@@ -46,10 +46,10 @@ const SignUp = () => {
     e.preventDefault();
     if (isSignup) {
       dispatch(signup(form));
-      // navigate("/");
+      navigate("/");
     } else {
       dispatch(signin(form));
-      // navigate("/");
+      navigate("/");
     }
   };
 
