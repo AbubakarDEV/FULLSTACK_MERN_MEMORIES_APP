@@ -6,7 +6,10 @@ import dotenv from "dotenv";
 import postRoutes from "./routes/posts.js";
 import userRoutes from "./routes/user.js";
 
-const url = "mongodb://0.0.0.0:27017/memories?directConnection=true";
+// const url = "mongodb://0.0.0.0:27017/memories?directConnection=true";
+
+const url =
+  "mongodb+srv://abubakarjilani99:oJDOSmHV0qdKHgwK@cluster0.nki8w7y.mongodb.net/?retryWrites=true&w=majority";
 mongoose.connect(url);
 
 const app = express();
